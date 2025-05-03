@@ -11,7 +11,10 @@ zstyle :compinstall filename '/home/oleander/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-eval "$(starship init zsh)"
 
 # enviro
 export STOW_DIR=/home/oleander/.dotfiles
+
+eval "$(starship init zsh)"
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
