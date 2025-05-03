@@ -3,3 +3,6 @@
 	name = bULLETHELL
 [diff]
 	submodule = log
+
+[merge]
+	tool = nvimdiff
