@@ -10,8 +10,6 @@
 	"custom/endeavour",
         "hyprland/workspaces",
         "hyprland/submap",
-        "sway/scratchpad",
-        "custom/media"
     ],
     "modules-center": [
         "hyprland/window"
@@ -22,58 +20,42 @@
         "cpu",
         "memory",
         "temperature",
-        "backlight",
         "keyboard-state",
-        "sway/language",
         "clock",
-        "tray",
-        "custom/power"
     ],
     // Modules configuration
-    // "hyprland/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        // "format-icons": {
+        //     "urgent": "",
+        //     "focused": "",
+        //     "default": ""
+        // }
+    },
     "custom/endeavour": {
         "format": ""
     },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
+    // "keyboard-state": {
+    //     "numlock": true,
+    //     "capslock": true,
+    //     "format": "{name} {icon}",
+    //     "format-icons": {
+    //         "locked": "",
+    //         "unlocked": ""
+    //     }
+    // },
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
     "hyprland/window": {
 	"format": "{}",
-	"rewrite": {
-	 "(.*) Brave": "🌎 $1"
-	},
 	"seperate-outputs": true
-    },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
+	// "rewrite": {
+	//  "(.*) Brave": "🌎 $1"
+	// },
     },
     "tray": {
         // "icon-size": 21,
@@ -126,18 +108,6 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
         "format" : "⏻ ",
