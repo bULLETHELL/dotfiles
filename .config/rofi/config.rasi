@@ -1,6 +1,6 @@
 configuration {
-  modes: [ combi ];
-  combi-modes: [ drun, run ];
+  modes: [ drun ];
+  show-icons: true;
   timeout {
       action: "kb-cancel";
       delay:  0;
