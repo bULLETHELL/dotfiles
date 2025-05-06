@@ -80,13 +80,13 @@ config.keys = {
   --
   -- Previous tab
   {
-    key = 'Tab',
-    mods = 'SUPER|SHIFT',
+    key = 'p',
+    mods = 'SUPER',
     action = action.ActivateTabRelative(-1),
   },
   -- Next tab
   {
-    key = 'Tab',
+    key = 'n',
     mods = 'SUPER',
     action = action.ActivateTabRelative(1),
   },

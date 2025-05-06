@@ -13,11 +13,11 @@ compinit
 # End of lines added by compinstall
 
 # enviro
-export STOW_DIR=/home/oleander/.dotfiles
+export STOW_DIR=$HOME/.dotfiles
 
 eval "$(starship init zsh)"
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # run fastfetch :)
 fastfetch

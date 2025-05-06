@@ -9,7 +9,7 @@
     "modules-left": [
 	"custom/endeavour",
         "hyprland/workspaces",
-        "hyprland/submap",
+        "hyprland/submap"
     ],
     "modules-center": [
         "hyprland/window"
@@ -20,8 +20,9 @@
         "cpu",
         "memory",
         "temperature",
+        "battery",
         "keyboard-state",
-        "clock",
+        "clock"
     ],
     // Modules configuration
     "hyprland/workspaces": {
@@ -94,7 +95,7 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth-muted": "X {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
@@ -108,6 +109,15 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": " {capacity}%",
+        "format-icons": ["", "", "", "", ""],
     },
     "custom/power": {
         "format" : "⏻ ",
