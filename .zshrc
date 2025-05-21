@@ -14,6 +14,7 @@ compinit
 
 # enviro
 export STOW_DIR=/home/oleander/.dotfiles
+export MANPAGER='nvim +Man!'
 
 eval "$(starship init zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

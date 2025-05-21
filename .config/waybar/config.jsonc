@@ -7,21 +7,23 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-	"custom/endeavour",
+	"custom/nixos",
         "hyprland/workspaces",
-        "hyprland/submap",
+        "hyprland/submap"
     ],
     "modules-center": [
         "hyprland/window"
     ],
     "modules-right": [
         "pulseaudio",
+        "backlight",
         "network",
         "cpu",
         "memory",
         "temperature",
+        "battery",
         "keyboard-state",
-        "clock",
+        "clock"
     ],
     // Modules configuration
     "hyprland/workspaces": {
@@ -35,18 +37,18 @@
         //     "default": ""
         // }
     },
-    "custom/endeavour": {
-        "format": ""
+    "custom/nixos": {
+        "format": ""
     },
-    // "keyboard-state": {
-    //     "numlock": true,
-    //     "capslock": true,
-    //     "format": "{name} {icon}",
-    //     "format-icons": {
-    //         "locked": "",
-    //         "unlocked": ""
-    //     }
-    // },
+     "keyboard-state": {
+         "numlock": true,
+         "capslock": true,
+         "format": "{name} {icon}",
+         "format-icons": {
+             "locked": "",
+             "unlocked": ""
+         }
+     },
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -94,7 +96,7 @@
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth-muted": "X {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
@@ -109,6 +111,15 @@
         },
         "on-click": "pavucontrol"
     },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": " {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+    },
     "custom/power": {
         "format" : "⏻ ",
 	"tooltip": false,
@@ -120,5 +131,10 @@
 		"suspend": "systemctl suspend",
 		"hibernate": "systemctl hibernate"
 	}
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
     }
 }
