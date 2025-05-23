@@ -7,7 +7,7 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-	"custom/nixos",
+	"custom/arch",
         "hyprland/workspaces",
         "hyprland/submap"
     ],
@@ -37,8 +37,8 @@
         //     "default": ""
         // }
     },
-    "custom/nixos": {
-        "format": ""
+    "custom/arch": {
+        "format": "󰣇"
     },
      "keyboard-state": {
          "numlock": true,
