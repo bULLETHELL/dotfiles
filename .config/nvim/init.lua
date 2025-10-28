@@ -7,6 +7,8 @@ vim.g.have_nerd_font = true
 
 require 'options'
 
+require 'keymaps'
+
 -- lazy bootstrap installs lazy
 require 'lazy-bootstrap'
 
