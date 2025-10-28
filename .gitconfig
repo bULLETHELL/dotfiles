@@ -1,8 +1,6 @@
 [user]
 	email = polyswing7@hotmail.com
 	name = bULLETHELL
-[diff]
-	submodule = log
 
 [merge]
 	tool = nvimdiff
