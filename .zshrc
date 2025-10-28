@@ -43,5 +43,9 @@ _dotnet_zsh_complete()
 
 compdef _dotnet_zsh_complete dotnet
 
+# aliases
+alias ll='ls -la'
+alias la='ls -a'
+
 # run fastfetch :)
 fastfetch
