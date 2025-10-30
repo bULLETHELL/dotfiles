@@ -4,6 +4,10 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Close buffer
 vim.keymap.set('n', '<leader>x', '<cmd>bd<CR>')
 
+-- Buffer navigation
+vim.keymap.set('n', '<Tab>', '<cmd>bn<CR>')
+vim.keymap.set('n', '<S-Tab>', '<cmd>bn<CR>')
+
 -- Window navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>')

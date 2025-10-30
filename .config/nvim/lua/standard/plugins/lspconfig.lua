@@ -10,6 +10,8 @@ return {
 			library = {
 				-- Load luvit types when the `vim.uv` word is found
 				{ path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+				-- Load snacks types
+				{ path = 'snacks.nvim',        words = { 'Snacks' } },
 			}
 		}
 	},
@@ -27,12 +29,12 @@ return {
 			-- Great completions plugin
 			'saghen/blink.cmp',
 		},
-		config = function ()
+		config = function()
 			vim.api.nvim_create_autocmd('LspAttach', {
-				group = vim.api.nvim_create_augroup('standard-lsp-attach', {clear = true}),
-				callback = function (event)
+				group = vim.api.nvim_create_augroup('standard-lsp-attach', { clear = true }),
+				callback = function(event)
 					-- Create function for mapping keybindings
-					local map = function (keys, func, desc, mode)
+					local map = function(keys, func, desc, mode)
 						mode = mode or 'n'
 						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
 					end
@@ -43,8 +45,30 @@ return {
 					-- Code actions
 					map('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction', { 'n', 'x' })
 
-					-- Goto declaration
-					map('<leader>gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
+					-- Goto declarations
+					map('gD', function()
+						Snacks.picker.lsp_declarations()
+					end, '[g]oto [D]eclarations')
+
+					-- Goto definitions
+					map('gd', function()
+						Snacks.picker.lsp_definitions()
+					end, '[g]oto [d]efinitions')
+
+					-- Goto references
+					map('gr', function()
+						Snacks.picker.lsp_references()
+					end, '[g]oto [r]eferences')
+
+					-- Goto implementations
+					map('gI', function()
+						Snacks.picker.lsp_implementations()
+					end, '[g]oto [I]mplementations')
+
+					-- Goto type definitions
+					map('gt', function()
+						Snacks.picker.lsp_type_definitions()
+					end, '[g]oto [t]ype definitions')
 				end
 			})
 
@@ -60,7 +84,7 @@ return {
 						[vim.diagnostic.severity.HINT] = '󰌶 ',
 					}
 				} or {},
-				virtual_text= {
+				virtual_text = {
 					source = 'if_many',
 					spacing = 2,
 				},
@@ -91,7 +115,7 @@ return {
 			vim.list_extend(ensure_installed, {
 				'stylua', -- Always installed
 			})
-			require('mason-tool-installer').setup {ensure_installed = ensure_installed}
+			require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
 			for server, config in pairs(vim.tbl_extend('keep', servers.mason, servers.others)) do
 				if not vim.tbl_isempty(config) then
