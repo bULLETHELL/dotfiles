@@ -9,13 +9,16 @@ vim.o.mouse = 'a'
 vim.o.showmode = false
 
 -- Shared nvim and os clipboard
-vim.schedule(function () vim.o.clipboard = 'unnamedplus' end)
+vim.schedule(function()
+	vim.o.clipboard = 'unnamedplus'
+end)
 
 -- Case insensitive searching
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- decrease update time
+-- useful for cursorhold event for example
 vim.o.updatetime = 250
 
 -- splits
@@ -40,4 +43,3 @@ vim.o.breakindent = true
 -- indents
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
-
