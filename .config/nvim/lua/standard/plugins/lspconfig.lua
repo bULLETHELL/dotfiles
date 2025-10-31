@@ -30,6 +30,27 @@ return {
 			'saghen/blink.cmp',
 		},
 		config = function()
+			-- Diagnostics
+			vim.diagnostic.config {
+				severity_sort = true,
+				float = {
+					border = 'rounded',
+					source = 'if_many'
+				},
+				signs = vim.g.have_nerd_font and {
+					text = {
+						[vim.diagnostic.severity.ERROR] = '󰅚 ',
+						[vim.diagnostic.severity.WARN] = '󰀪 ',
+						[vim.diagnostic.severity.INFO] = '󰋽 ',
+						[vim.diagnostic.severity.HINT] = '󰌶 ',
+					}
+				} or {},
+				virtual_text = {
+					source = 'if_many',
+					spacing = 2,
+				},
+			}
+
 			vim.api.nvim_create_autocmd('LspAttach', {
 				group = vim.api.nvim_create_augroup('standard-lsp-attach', { clear = true }),
 				callback = function(event)
@@ -69,27 +90,30 @@ return {
 					map('gt', function()
 						Snacks.picker.lsp_type_definitions()
 					end, '[g]oto [t]ype definitions')
+
+					-- AutoCmd to show floating diagnostics on CursorHold
+					local floating_diagnostic_augroup = vim.api.nvim_create_augroup(
+						'standard-floating-diagnostic',
+						{ clear = false })
+					vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+						buffer = event.buf,
+						group = floating_diagnostic_augroup,
+						callback = function()
+							vim.diagnostic.open_float({
+								scope = "cursor",
+								focusable = false,
+							})
+						end
+					})
+
+					vim.api.nvim_create_autocmd('LspDetach', {
+						group = vim.api.nvim_create_augroup('standard-lsp-detach', { clear = true }),
+						callback = function(event2)
+							vim.api.nvim_clear_autocmds { group = floating_diagnostic_augroup, buffer = event2.buf }
+						end
+					})
 				end
 			})
-
-			-- Diagnostics
-			vim.diagnostic.config {
-				serverity_sort = true,
-				float = { border = 'rounded', source = 'if_many' },
-				signs = vim.g.have_nerd_font and {
-					text = {
-						[vim.diagnostic.severity.ERROR] = '󰅚 ',
-						[vim.diagnostic.severity.WARN] = '󰀪 ',
-						[vim.diagnostic.severity.INFO] = '󰋽 ',
-						[vim.diagnostic.severity.HINT] = '󰌶 ',
-					}
-				} or {},
-				virtual_text = {
-					source = 'if_many',
-					spacing = 2,
-				},
-			}
-
 
 			-- LSP servers are added here
 			local servers = {
